@@ -28,6 +28,20 @@ namespace SummerInternshipProgram.API
 
 
 
+            //Add Logging to project
+            builder.Services.AddLogging(
+                    builder =>
+                    {
+                        builder.AddConsole().SetMinimumLevel(LogLevel.Trace);
+                        builder.SetMinimumLevel(LogLevel.Trace);
+                        builder.AddNLog(nlpopts);
+                    });
+            builder.Host.ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.AddNLog();
+            });
+
             //Dependency Injection of Services and Helpers
             builder.Services.AddScoped<ILogHelper, LogHelper>();
 
