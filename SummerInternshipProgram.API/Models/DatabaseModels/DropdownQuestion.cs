@@ -8,6 +8,6 @@ namespace SummerInternshipProgram.API.Models.DatabaseModels
 
         public List<QuestionItem> QuestionOptions { get; set; }
 
-        public QuestionItem Answer { get; set; }
+        public QuestionItem? Answer { get; set; }
     }
 }

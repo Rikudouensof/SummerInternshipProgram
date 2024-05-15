@@ -4,6 +4,8 @@ using NLog.Extensions.Logging;
 using SummerInternshipProgram.API.Data;
 using SummerInternshipProgram.API.Helpers.Implementation;
 using SummerInternshipProgram.API.Helpers.Interface;
+using SummerInternshipProgram.API.Services.Implementation;
+using SummerInternshipProgram.API.Services.Interfaces;
 
 namespace SummerInternshipProgram.API
 {
@@ -49,6 +51,16 @@ namespace SummerInternshipProgram.API
             });
 
             //Dependency Injection of Services and Helpers
+            builder.Services.AddScoped<IApplicatService, ApplicatService>();
+            builder.Services.AddScoped<IDateQuestionService, DateQuestionService>();
+            builder.Services.AddScoped<IDropdownQuestionService, DropdownQuestionService>();
+            builder.Services.AddScoped<IInternshipProgramService, InternshipProgramService>();
+            builder.Services.AddScoped<IGenderService, GenderService>();
+            builder.Services.AddScoped<IMultipleChoiceQuestionService, MultipleChoiceQuestionService>();
+            builder.Services.AddScoped<INumericQuestionService, NumericQuestionService>();
+            builder.Services.AddScoped<IParagraphQuestionService, ParagraphQuestionService>();
+            builder.Services.AddScoped<IQuestionTypeService, QuestionTypeService>();
+            builder.Services.AddScoped<IYesOrNoQuestionService, YesOrNoQuestionService>();
             builder.Services.AddScoped<ILogHelper, LogHelper>();
 
 
@@ -57,9 +69,11 @@ namespace SummerInternshipProgram.API
             builder.Services.AddSwaggerGen();
 
             //Add Database
-           
+            var cosmosPK = config["CosmosDb:PrimaryKey"];
+            var cosmosUri = config["CosmosDb:URI"];
+            var consmosDatabase = config["CosmosDb:DatabaseName"];
             builder.Services.AddDbContext<EmploymentDbContext>(options =>
-               options.UseCosmos(config["CosmosDb,PrimaryKey"], config["CosmosDb,PrimaryKey"], config["CosmosDb,DatabaseName"]));
+               options.UseCosmos(cosmosUri, cosmosPK, consmosDatabase));
 
             var app = builder.Build();
 

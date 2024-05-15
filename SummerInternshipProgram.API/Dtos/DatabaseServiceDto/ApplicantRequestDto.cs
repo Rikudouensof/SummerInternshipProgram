@@ -1,9 +1,9 @@
-﻿using SummerInternshipProgram.API.Models.HelperModel;
+﻿using SummerInternshipProgram.API.Models.DatabaseModels;
 using System.ComponentModel.DataAnnotations;
 
-namespace SummerInternshipProgram.API.Models.DatabaseModels
+namespace SummerInternshipProgram.API.Dtos.DatabaseServiceDto
 {
-    public class Applicant
+    public class ApplicantRequestDto
     {
 
         public string Id { get; set; }
@@ -38,20 +38,13 @@ namespace SummerInternshipProgram.API.Models.DatabaseModels
 
         public bool? IsIDNumberHidden { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         public bool? IsDateOfBirthInternal { get; set; }
 
         public bool? IsDateOfBirthHidden { get; set; }
 
-        public ApplicantGender Gender { get; set; }
-
-        public List<ApplicantDateQuestion>? DateAnswers { get; set; }
-        public List<ApplicantDropdownQuestion>? DropdownAnswers { get; set; }
-        public List<ApplicantMultipleChoiceQuestion>? MultipleChoiceAnswers { get; set; }
-        public List<ApplicantNumericQuestion>? NumericAnswers { get; set; }
-        public List<ApplicantParagraphQuestion>? ParagraphAnswers { get; set; }
-        public List<ApplicantYesOrNoQuestion>? YesOrNoAnswers { get; set; }
+        
 
     }
 }

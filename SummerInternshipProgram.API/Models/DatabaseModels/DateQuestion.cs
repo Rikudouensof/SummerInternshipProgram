@@ -5,6 +5,6 @@ namespace SummerInternshipProgram.API.Models.DatabaseModels
     public class DateQuestion : BaseQuestionDbModel
     {
 
-        public DateTime Answer { get; set; }
+        public DateTime? Answer { get; set; }
     }
 }

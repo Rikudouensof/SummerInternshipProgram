@@ -26,18 +26,18 @@ namespace SummerInternshipProgram.API.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Applicant>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id);
-            modelBuilder.Entity<DateQuestion>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id);
-            modelBuilder.Entity<DropdownQuestion>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id).OwnsMany(item => item.QuestionOptions);
+            modelBuilder.Entity<DateQuestion>().ToContainer("DateQuestions").HasPartitionKey(partitionkey => partitionkey.Id);
+            modelBuilder.Entity<DropdownQuestion>().ToContainer("DropdownQuestions").HasPartitionKey(partitionkey => partitionkey.Id).OwnsMany(item => item.QuestionOptions);
 
-            modelBuilder.Entity<Gender>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id);
+            modelBuilder.Entity<Gender>().ToContainer("Genders").HasPartitionKey(partitionkey => partitionkey.Id);
 
-            modelBuilder.Entity<MultipleChoiceQuestion>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id).OwnsMany(options => options.QuestionOptions);
-            modelBuilder.Entity<NumericQuestion>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id);
-            modelBuilder.Entity<ParagraphQuestion>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id);
-            modelBuilder.Entity<InternshipProgram>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id);
-            modelBuilder.Entity<QuestionType>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id);
-            modelBuilder.Entity<YesOrNoQuestion>().ToContainer("Applicants").HasPartitionKey(partitionkey => partitionkey.Id);
-            modelBuilder.Entity<MultipleChoiceQuestion>().OwnsMany(answers => answers.QuestionAnswers);
+            modelBuilder.Entity<MultipleChoiceQuestion>().ToContainer("MultipleChoiceQuestions").HasPartitionKey(partitionkey => partitionkey.Id).OwnsMany(options => options.QuestionOptions);
+            modelBuilder.Entity<NumericQuestion>().ToContainer("NumericQuestions").HasPartitionKey(partitionkey => partitionkey.Id);
+            modelBuilder.Entity<ParagraphQuestion>().ToContainer("ParagraphQuestions").HasPartitionKey(partitionkey => partitionkey.Id);
+            modelBuilder.Entity<InternshipProgram>().ToContainer("Programs").HasPartitionKey(partitionkey => partitionkey.Id);
+            modelBuilder.Entity<QuestionType>().ToContainer("QuestionTypes").HasPartitionKey(partitionkey => partitionkey.Id);
+            modelBuilder.Entity<YesOrNoQuestion>().ToContainer("YesOrNoQuestions").HasPartitionKey(partitionkey => partitionkey.Id);
+            modelBuilder.Entity<MultipleChoiceQuestion>().HasMany(answers => answers.QuestionAnswers);
 
             modelBuilder.Entity<Applicant>().OwnsMany(x => x.DateAnswers);
             modelBuilder.Entity<Applicant>().OwnsMany(x => x.DropdownAnswers);
@@ -45,6 +45,8 @@ namespace SummerInternshipProgram.API.Data
             modelBuilder.Entity<Applicant>().OwnsMany(x => x.NumericAnswers);
             modelBuilder.Entity<Applicant>().OwnsMany(x => x.ParagraphAnswers);
             modelBuilder.Entity<Applicant>().OwnsMany(x => x.YesOrNoAnswers);
+            modelBuilder.Entity<Applicant>().OwnsOne(x => x.Gender);
+
         }
     }
 
