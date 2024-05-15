@@ -1,5 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
 using NLog.Extensions.Logging;
+using SummerInternshipProgram.API.Data;
 using SummerInternshipProgram.API.Helpers.Implementation;
 using SummerInternshipProgram.API.Helpers.Interface;
 
@@ -19,6 +21,10 @@ namespace SummerInternshipProgram.API
                 IncludeScopes = true,
                 ShutdownOnDispose = true
             };
+            //Get AppSettings, this should be a hiden file through Manage user secrets
+            IConfiguration config = new ConfigurationBuilder()
+                            .AddJsonFile("appsettings.json")
+                            .Build();
 
             var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +55,11 @@ namespace SummerInternshipProgram.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //Add Database
+           
+            builder.Services.AddDbContext<EmploymentDbContext>(options =>
+               options.UseCosmos(config["CosmosDb,PrimaryKey"], config["CosmosDb,PrimaryKey"], config["CosmosDb,DatabaseName"]));
 
             var app = builder.Build();
 

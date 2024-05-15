@@ -45,7 +45,12 @@ namespace SummerInternshipProgram.API.Models.DatabaseModels
 
         public Gender Gender { get; set; }
 
-        public List<object> Answers { get; set; }
+        public List<DateQuestion>? DateAnswers { get; set; }
+        public List<DropdownQuestion>? DropdownAnswers { get; set; }
+        public List<MultipleChoiceQuestion>? MultipleChoiceAnswers { get; set; }
+        public List<NumericQuestion>? NumericAnswers { get; set; }
+        public List<ParagraphQuestion>? ParagraphAnswers { get; set; }
+        public List<YesOrNoQuestion>? YesOrNoAnswers { get; set; }
 
     }
 }
