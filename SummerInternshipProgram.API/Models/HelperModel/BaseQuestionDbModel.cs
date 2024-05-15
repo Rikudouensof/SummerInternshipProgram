@@ -1,6 +1,6 @@
-﻿namespace SummerInternshipProgram.API.Models.DatabaseModels
+﻿namespace SummerInternshipProgram.API.Models.HelperModel
 {
-    public class BaseQuestionModel
+    public class BaseQuestionDbModel
     {
 
         public string Id { get; set; }

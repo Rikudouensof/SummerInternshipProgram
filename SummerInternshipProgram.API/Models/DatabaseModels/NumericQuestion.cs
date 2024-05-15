@@ -1,6 +1,8 @@
-﻿namespace SummerInternshipProgram.API.Models.DatabaseModels
+﻿using SummerInternshipProgram.API.Models.HelperModel;
+
+namespace SummerInternshipProgram.API.Models.DatabaseModels
 {
-    public class NumericQuestion : BaseQuestionModel
+    public class NumericQuestion : BaseQuestionDbModel
     {
         
 

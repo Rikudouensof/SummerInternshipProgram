@@ -1,11 +1,13 @@
-﻿namespace SummerInternshipProgram.API.Models.DatabaseModels
+﻿using SummerInternshipProgram.API.Models.HelperModel;
+
+namespace SummerInternshipProgram.API.Models.DatabaseModels
 {
-    public class DropdownQuestion : BaseQuestionModel
+    public class DropdownQuestion : BaseQuestionDbModel
     {
         
 
-        public List<string> QuestionOptions { get; set; }
+        public List<QuestionItem> QuestionOptions { get; set; }
 
-        public string Answer { get; set; }
+        public QuestionItem Answer { get; set; }
     }
 }

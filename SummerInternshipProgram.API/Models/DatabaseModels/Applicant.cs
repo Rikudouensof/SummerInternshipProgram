@@ -2,7 +2,7 @@
 
 namespace SummerInternshipProgram.API.Models.DatabaseModels
 {
-    public class Person
+    public class Applicant
     {
 
         public string Id { get; set; }
@@ -44,5 +44,8 @@ namespace SummerInternshipProgram.API.Models.DatabaseModels
         public bool? IsDateOfBirthHidden { get; set; }
 
         public Gender Gender { get; set; }
+
+        public List<object> Answers { get; set; }
+
     }
 }

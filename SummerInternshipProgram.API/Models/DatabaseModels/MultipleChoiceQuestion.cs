@@ -1,12 +1,14 @@
-﻿namespace SummerInternshipProgram.API.Models.DatabaseModels
+﻿using SummerInternshipProgram.API.Models.HelperModel;
+
+namespace SummerInternshipProgram.API.Models.DatabaseModels
 {
-    public class MultipleChoiceQuestion : BaseQuestionModel
+    public class MultipleChoiceQuestion : BaseQuestionDbModel
     {
 
         
 
-        public List<string> QuestionOptions { get; set; }
+        public List<QuestionItem> QuestionOptions { get; set; }
 
-        public List<string> QuestionAnswers { get; set; }
+        public List<QuestionItem> QuestionAnswers { get; set; }
     }
 }
