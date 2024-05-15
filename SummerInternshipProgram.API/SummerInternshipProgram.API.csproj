@@ -14,13 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
     <Folder Include="Dtos\" />
     <Folder Include="Constants\" />
     <Folder Include="Data\" />
     <Folder Include="Services\Interfaces\" />
-    <Folder Include="Services\Implementation\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
 

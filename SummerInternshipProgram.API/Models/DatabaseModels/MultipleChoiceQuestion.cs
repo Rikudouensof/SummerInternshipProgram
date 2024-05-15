@@ -9,6 +9,6 @@ namespace SummerInternshipProgram.API.Models.DatabaseModels
 
         public List<QuestionItem> QuestionOptions { get; set; }
 
-        public List<QuestionItem> QuestionAnswers { get; set; }
+        public List<QuestionItem>? QuestionAnswers { get; set; }
     }
 }

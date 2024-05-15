@@ -6,6 +6,6 @@ namespace SummerInternshipProgram.API.Models.DatabaseModels
     {
         
 
-        public bool Answer { get; set; }
+        public bool? Answer { get; set; }
     }
 }
