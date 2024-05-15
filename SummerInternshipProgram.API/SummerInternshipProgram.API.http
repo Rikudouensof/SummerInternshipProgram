@@ -1,0 +1,6 @@
+@SummerInternshipProgram.API_HostAddress = http://localhost:5225
+
+GET {{SummerInternshipProgram.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
